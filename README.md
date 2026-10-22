@@ -1,170 +1,119 @@
-<<<<<<< HEAD
-# Handdesk
+# 🖐️ HandDesk — AI-Powered Gesture Control System
 
-A browser-based control center driven by your webcam. Control a mouse, type on a virtual keyboard, draw in the air, measure distances between fingers, play gesture games, and scan your body, face and signs. All tracking runs on your device with [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe). No video is uploaded.
+An interactive, webcam-based **Gesture Control System** that lets you interact with your computer using hand gestures — **no mouse, no keyboard, and no additional external input devices required.** Built with HTML, CSS, JavaScript, and MediaPipe, HandDesk combines computer vision, gesture recognition, and interactive visual effects to explore a new way of controlling technology.
 
-## Files
+## ✨ Features
 
-| File | Purpose |
-|---|---|
-| `index.html` | The whole app (HTML, CSS, JavaScript) |
-| `bridge.py` | Optional local helper that lets your hand control the real mouse and keyboard |
-| `requirements.txt` | Python packages for `bridge.py` |
-| `README.md` | This documentation |
+- 🖐️ **Hand Tracking:** Track hand movements in real time using your webcam.
+- 🖱️ **Gesture-Based Cursor Control:** Move the cursor using hand movements.
+- 🤏 **Pinch to Click:** Interact with supported elements using pinch gestures.
+- 🎨 **Air Drawing:** Draw in the air using hand gestures and six colours.
+- 🎵 **Sound Drawing:** Turn drawing interactions into a creative audio experience.
+- 💥 **Clap Effects:** Trigger shockwave rings, screen shake, flashes, and boom sound effects.
+- 🔒 **Palm Lock:** Use an open-palm gesture to activate the screen-lock interaction.
+- 🔄 **Gesture-Based Mode Switching:** Switch between modes using supported gestures.
+- 👀 **Body & Face Analysis:** Visualise pose landmarks and explore facial and appearance analysis.
+- ✋ **Sign-to-Text Demo:** Recognise supported static hand shapes and display corresponding text.
+- 🔊 **Text-to-Speech:** Hear recognised words spoken aloud.
+- 🎮 **Arcade Mode:** Play four mini-games, earn XP, and unlock badges.
+- 🌐 **Browser-Based Experience:** Run the project in a modern web browser.
+- 🔐 **Privacy-Focused Design:** Designed for local browser processing without uploading camera footage.
 
-## Quick start
+## 🛠️ Technologies Used
 
-Browsers allow the camera only on `localhost` or HTTPS.
+- **HTML5** – Structures the application interface.
+- **CSS3** – Provides styling, animations, and visual effects.
+- **JavaScript** – Handles gesture interactions, application logic, and event processing.
+- **MediaPipe** – Supports hand tracking and landmark detection.
+- **Computer Vision** – Enables camera-based hand and body tracking features.
+- **Web APIs** – Support webcam access, audio playback, speech synthesis, and browser interactions.
 
-```bash
-python3 -m http.server 8000
-```
+## 🚀 Getting Started
 
-Open http://localhost:8000 in Chrome or Edge, click **Start hand control**, and allow the camera. The page needs internet access to load the MediaPipe library and models.
+Follow these steps to run HandDesk on your computer.
 
-## Tabs
-
-Press keys 1 to 6 to switch tabs, bring both hands together and then pull them apart, or hold a fist for 1.2 s to go to the next one. Switching by tab, key or fist plays one of three transitions (sliding panels, colour burst, spinning tiles) with confetti. Switching by clap uses a different set (shockwave, blinds, zoom flash), so you can tell them apart. All are skipped if your system asks for reduced motion, unless you turn on **Always play transitions** in settings.
-
-| Tab | What it does |
-|---|---|
-| Mouse | Move, click, drag and scroll with your hand. Includes target practice, a drag puck and a scroll list |
-| Keyboard | Virtual keyboard. Point at a key and hold still for 1 s, or pinch, to press |
-| Draw | Air drawing with 6 colours, brush size, eraser, undo, clear, PNG export and optional sound |
-| Gestures | Illustrated gesture guide that highlights the gesture you are making |
-| Arcade | Four timed games, XP, levels and badges |
-| Body scan | Pose, face parts, expression, clothing colour, attention estimate and sign to text |
-
-## Gestures
-
-| Gesture | Action |
-|---|---|
-| Point | Move the cursor |
-| Pinch (thumb and index) | Click, drag or draw |
-| Index and middle finger up, move up or down | Scroll |
-| Open palm, hold 1.2 s | Lock or unlock tracking, with a red circle and a Locked / Unlocked box transition |
-| Fist, hold 1.2 s | Next tab |
-| Bring both hands together, then pull them apart | Next mode with a random clap transition. A loud deep boom, big red shockwave rings at your hands, a red flash, a strong screen shake and XP happen when the hands meet |
-| Hold still on a button for 1 s | Presses it without a pinch (Easy click; a ring fills around the cursor) |
-
-## Finger distance meter
-
-The side panel is visible on every tab. It shows the distance between two fingertips in centimetres and in palm lengths, with a dashed line drawn on the camera view. Choose thumb to index, thumb to middle, index to middle, or index tips of two hands.
-
-**Hold 3 s to capture** saves the current value. It works with a mouse, touch, or a pinch held still over the button.
-
-The value is an estimate. It assumes your palm (wrist to middle knuckle) is about 9.5 cm. Moving your hand toward or away from the camera, or tilting it, changes the result. Expect errors of a few centimetres.
-
-## Two-hand features
-
-- Both hands are tracked and drawn in different colours. The first detected hand moves the cursor.
-- The side panel shows the finger count per hand.
-- In Draw, pinch with your second hand and move your hands apart or together to change brush size.
-- Claps are detected when the palms of both hands come together quickly after being apart.
-
-## Sound
-
-- **Sound drawing** (Draw toolbar): pitch follows the height of your stroke and snaps to a pentatonic scale.
-- Sound effects for correct answers, claps and fanfares. Turn them off in settings.
-
-## Arcade and gamification
-
-| Game | Goal |
-|---|---|
-| Sign challenge (10 s) | Show the requested sign. Streaks add bonus points |
-| Finger math (10 s) | Show the answer with the fingers of both hands |
-| Clap rush (10 s) | Clap as many times as you can |
-| Face challenge (10 s) | Make the requested expression |
-
-Every action earns XP, and the level bar is in the header. There are 12 badges, for example First pinch, Surveyor, Two hands, Air artist, Standing ovation, Full scan, Expressive and Signer. Progress is saved in your browser's local storage under `hd_p`.
-
-## Body scan
-
-Models for face and pose load the first time you open the tab (or start the Face challenge), and only run while you use them, to save CPU.
-
-| Feature | How it works |
-|---|---|
-| Body parts | 33-point pose skeleton. Chips turn green when head, eyes, nose, ears, mouth, shoulders, elbows, wrists, hands, hips, knees and ankles are visible |
-| Face parts | Labelled landmarks for eyes, nose, ears, mouth, chin and forehead, with outlines of lips, eyes and face |
-| Expression | Rules over MediaPipe face blendshapes: happy, surprised, angry, sad, wink, tongue out, neutral |
-| Attention estimate | Head direction (nose position between the eyes) combined with eye openness |
-| Clothing colour | Median colour of a patch of your torso (or below your chin if shoulders are out of view), named (black, white, navy, red, and so on) |
-| Hair | Colour of a patch above the forehead. Reports "little or none visible" when it matches your skin tone |
-| Face shape | Oval, round, square, heart, diamond or oblong, from landmark ratios, smoothed over about 40 frames. Needs you to face the camera |
-| Sign to text | Hold a sign for 0.9 s to add a word to the transcript. The Speak button reads it aloud |
-
-### Sign vocabulary
-
-Yes / good (thumbs up), Peace, OK, Rock on, Call me, Hello / stop (open palm), Fist (A), Look / one (point), I love you, and the letter L.
-
-## What this app cannot do
-
-Please read this before relying on any result.
-
-- **Brain and mind:** a webcam cannot see or read your brain or thoughts. The attention estimate only uses head direction and eye openness.
-- **Teeth:** individual teeth are not detected. You can see mouth shape and smile strength only.
-- **Hair and face shape:** only a colour and a rough ratio-based guess. Hair style, length and texture are not detected, and hats or backgrounds can fool the colour.
-- **Clothing:** only a median colour is reported. Garment type (shirt, jacket) is not detected, and lighting changes the colour.
-- **Sign language:** real sign languages use motion, both hands, the face and grammar. This app recognises about ten static hand shapes. It is a game and a demo, not a translator.
-- **Expressions:** the labels are simple rules and can be wrong. They are not a measure of how someone feels.
-- **Distance:** centimetre values are estimates based on average hand size.
-- **System control:** a web page cannot move your computer's mouse by itself. Use `bridge.py` for that.
-
-## System bridge (control the real computer)
+### 1. Clone the Repository
 
 ```bash
-pip install -r requirements.txt
-python bridge.py
+git clone https://github.com/dilkashshekh11/Gesture_Control_System.git
 ```
 
-Then switch on **Control system mouse** and/or **Type into system** in the side panel. Your hand moves the real cursor, pinch presses the mouse button, two fingers scroll, and the virtual keyboard types into the focused app. Move the mouse into a screen corner to abort (pyautogui failsafe). The bridge listens on `localhost:8765` only.
+### 2. Open the Project
 
-## How it works
+Navigate to the downloaded project folder and open it in Visual Studio Code.
 
-```
-webcam -> MediaPipe HandLandmarker (2 hands, always on)
-       -> gesture rules (finger extension, pinch ratio, holds)
-       -> virtual cursor -> synthetic mouse events -> any element
-       -> optional WebSocket -> bridge.py -> pyautogui -> real mouse and keyboard
-webcam -> FaceLandmarker + PoseLandmarker (Body scan tab and Face challenge only)
+```bash
+cd Gesture_Control_System
 ```
 
-- Pinch is the thumb-index distance divided by hand size, with hysteresis to avoid flicker.
-- The cursor uses adaptive smoothing: more smoothing when moving slowly, so clicks do not drift.
-- The virtual cursor dispatches `mousedown`, `mousemove`, `mouseup` and `click` events, so ordinary page elements react as if a real mouse were used.
+### 3. Launch the Application
 
-## Tuning
+Open `index.html` in your browser, or use the **Live Server** extension in Visual Studio Code if a local server is required.
 
-In `index.html`, search for these:
+### 4. Allow Camera Access
 
-| What | Where |
-|---|---|
-| Reach and pinch sensitivity | Sliders in the side panel (`S.gain`, `S.pin`) |
-| Hold times (lock, next tab) | `hold("palm",1.2,...)` and `hold("fist",1.2,...)` |
-| Palm size used for cm | `const HAND=9.5` |
-| Clap thresholds | `dd<1.5` and `>2.6` in `extras()` |
-| Easy click time | `900` in the `S.dw` block inside `handle()`; switch it off in the side panel |
-| Expression rules | `FS.expr=` line in `body()` |
-| Face shape thresholds | `sh=` line in `hairShape()` |
-| Boom sound | `boom()` |
-| Sign rules | `sign()` and `wordOf()` |
+- Allow webcam access when your browser requests permission.
+- Position your hand in front of the camera.
+- Ensure your hand is clearly visible and the lighting is sufficient.
+- Follow the on-screen instructions to try the available gestures.
 
-## Troubleshooting
+**Note:** Some features may require an internet connection to load external libraries or other dependencies.
 
-- **Camera does not start:** use `http://localhost` or HTTPS and allow the camera.
-- **Models do not load:** check your internet connection. Models come from `storage.googleapis.com`, libraries from `cdn.jsdelivr.net`.
-- **Low frame rate:** close other tabs, use Chrome or Edge, and stay out of the Body scan tab when you do not need it.
-- **Bridge not found:** make sure `python bridge.py` is running before switching the setting on.
-- **Signs are misread:** face your palm to the camera, use front lighting, and keep your hand 40 to 60 cm away.
+## 📂 Project Structure
 
-## Privacy
+The exact structure may vary depending on the files in your repository.
 
-Video stays in your browser. Only the MediaPipe code and model files are downloaded. XP and badges are stored locally. The bridge does not send data anywhere.
+```text
+Gesture_Control_System/
+│
+├── index.html       # Main application interface
 
-## Credits
+└── README.md        # Project documentation
+```
 
-Built with [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe), [pyautogui](https://github.com/asweigart/pyautogui) and [websockets](https://github.com/python-websockets/websockets).
-=======
-# Gesture_Control_System
-HandDesk is a webcam-based gesture control system that lets you interact with your computer without a mouse, keyboard, or external input devices. Built with HTML, CSS, JavaScript, and MediaPipe, it features hand tracking, air drawing, gesture-based interactions, visual effects, sign-to-text demos, and mini-games.
->>>>>>> cb090ec930e678cee37eb713a41940d238f26fae
+*Update the filenames above to match your actual repository structure.*
+
+## 📸 How It Works
+
+1. Open HandDesk in a compatible web browser.
+2. Allow the application to access your webcam.
+3. The camera captures video frames for hand tracking.
+4. MediaPipe detects hand landmarks from the camera input.
+5. JavaScript interprets supported gestures and maps them to actions.
+6. The application responds with cursor movements, drawing, animations, sound effects, and other interactions.
+
+## 🎯 Project Purpose
+
+HandDesk was developed to explore **computer vision, gesture recognition, and human-computer interaction** through an interactive browser-based experience.
+
+The project demonstrates how natural hand movements can be used as an alternative input method, combining creative coding, real-time tracking, animations, and audio into a single application.
+
+## 🔮 Future Improvements
+
+- Improve gesture recognition accuracy and responsiveness.
+- Add customisable gestures and shortcuts.
+- Expand gesture support and accessibility options.
+- Improve performance across different devices and browsers.
+- Introduce additional interactive modes and mini-games.
+
+## 👨‍💻 Developer
+
+**Dilkash Shekh**
+
+Computer Science with AI Student | Computer Vision Enthusiast | Web Developer
+
+- **GitHub:** [@dilkashshekh11](https://github.com/dilkashshekh11)
+
+## 🔐 Privacy & Security
+
+HandDesk is designed to process camera input locally in the browser. Camera access requires user permission. Review the source code and external dependencies to verify the application's actual data-handling behaviour before deployment.
+
+## 📄 License
+
+This project is intended for educational purposes and personal learning. Add a `LICENSE` file to specify the permissions and conditions for using, modifying, and distributing the project.
+
+---
+
+⭐ If you find HandDesk interesting, consider giving the repository a star!
+
+**Built with curiosity. Powered by gestures. Inspired by the future. 🚀**
