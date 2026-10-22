@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Handdesk
 
 A browser-based control center driven by your webcam. Control a mouse, type on a virtual keyboard, draw in the air, measure distances between fingers, play gesture games, and scan your body, face and signs. All tracking runs on your device with [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe). No video is uploaded.
@@ -163,3 +164,7 @@ Video stays in your browser. Only the MediaPipe code and model files are downloa
 ## Credits
 
 Built with [MediaPipe Tasks Vision](https://github.com/google-ai-edge/mediapipe), [pyautogui](https://github.com/asweigart/pyautogui) and [websockets](https://github.com/python-websockets/websockets).
+=======
+# Gesture_Control_System
+HandDesk is a webcam-based gesture control system that lets you interact with your computer without a mouse, keyboard, or external input devices. Built with HTML, CSS, JavaScript, and MediaPipe, it features hand tracking, air drawing, gesture-based interactions, visual effects, sign-to-text demos, and mini-games.
+>>>>>>> cb090ec930e678cee37eb713a41940d238f26fae
